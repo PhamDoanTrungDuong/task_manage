@@ -41,250 +41,134 @@
 			<!-- <Projects /> -->
 		</div>
 		<div>
-			<h1 className="text-2xl font-bold text-[#2E3A59] ml-36 my-2">Progress</h1>
+			<h1 className="text-2xl font-bold text-[#2E3A59] ml-36 my-2">Tasks</h1>
 			<div
-				className="max-h-[350px] scrollbar-hide scroll-smooth overflow-y-scroll"
+				className="max-h-[400px] max-w-[450px] mx-auto scroll-smooth overflow-y-scroll"
 			>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
+				<router-link :to="{
+					name: 'task',
+					params: {
+						id: 1
+					}
+				}">
+					<div
+						className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
+					>
 						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
+							className=" flex justify-center items-center gap-4 "
 						>
+							<div
+								className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
+							>
+								<Icon
+									icon="mdi:calendar-month-outline"
+									width="25"
+									color="#fff"
+								/>
+							</div>
+							<div>
+								<h3 className="text-lg font-bold">
+									Desgin Changes
+								</h3>
+								<p
+									className="text-gray-500 text-sm"
+								>
+									2 Days ago
+								</p>
+							</div>
+						</div>
+						<div className="cursor-pointer">
 							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
+								icon="mdi:dots-vertical"
+								width="30"
+								color="#D8DEF3"
 							/>
 						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
 					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
+				</router-link>
+				<router-link :to="{
+					name: 'task',
+					params: {
+						id: 1
+					}
+				}">
+					<div
+						className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
+					>
 						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
+							className=" flex justify-center items-center gap-4 "
 						>
+							<div
+								className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
+							>
+								<Icon
+									icon="mdi:calendar-month-outline"
+									width="25"
+									color="#fff"
+								/>
+							</div>
+							<div>
+								<h3 className="text-lg font-bold">
+									Desgin Changes
+								</h3>
+								<p
+									className="text-gray-500 text-sm"
+								>
+									2 Days ago
+								</p>
+							</div>
+						</div>
+						<div className="cursor-pointer">
 							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
+								icon="mdi:dots-vertical"
+								width="30"
+								color="#D8DEF3"
 							/>
 						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
 					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
+				</router-link>
+				<router-link :to="{
+					name: 'task',
+					params: {
+						id: 1
+					}
+				}">
+					<div
+						className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
+					>
 						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
+							className=" flex justify-center items-center gap-4 "
 						>
+							<div
+								className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
+							>
+								<Icon
+									icon="mdi:calendar-month-outline"
+									width="25"
+									color="#fff"
+								/>
+							</div>
+							<div>
+								<h3 className="text-lg font-bold">
+									Desgin Changes
+								</h3>
+								<p
+									className="text-gray-500 text-sm"
+								>
+									2 Days ago
+								</p>
+							</div>
+						</div>
+						<div className="cursor-pointer">
 							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
+								icon="mdi:dots-vertical"
+								width="30"
+								color="#D8DEF3"
 							/>
 						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
 					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
-						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-						>
-							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
-							/>
-						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
-					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
-						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-						>
-							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
-							/>
-						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
-					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
-						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-						>
-							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
-							/>
-						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
-					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
-						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-						>
-							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
-							/>
-						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
-					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
-				<div
-					className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-				>
-					<div className=" flex justify-center items-center gap-4 ">
-						<div
-							className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-						>
-							<Icon
-								icon="mdi:calendar-month-outline"
-								width="25"
-								color="#fff"
-							/>
-						</div>
-						<div>
-							<h3 className="text-lg font-bold">
-								Desgin Changes
-							</h3>
-							<p className="text-gray-500 text-sm">
-								2 Days ago
-							</p>
-						</div>
-					</div>
-					<div className="cursor-pointer">
-						<Icon
-							icon="mdi:dots-vertical"
-							width="30"
-							color="#D8DEF3"
-						/>
-					</div>
-				</div>
+				</router-link>
+
 			</div>
 		</div>
 	</div>

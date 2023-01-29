@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<div class="bg-[#cbe1fa] h-[98vh] rounded-2xl p-4">
+	<div class="bg-sky-300/30 h-[98vh] rounded-2xl p-4">
 		<div>
 			<Headers />
 			<router-view />

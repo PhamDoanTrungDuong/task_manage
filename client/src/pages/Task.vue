@@ -15,7 +15,7 @@
 				</router-link>
 
 				<div className="text-3xl my-5 font-bold text-center text-[#2E3A59]">
-					<h1>Create a Task</h1>
+					<h1>Task Detail</h1>
 				</div>
 				<form>
 					<div class="mb-6">
@@ -64,7 +64,7 @@
 							type="button"
 							class="w-full px-7 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:scale-105 duration-100"
 						>
-							Create Task
+							Edit Task
 						</button>
 					</div>
 				</form>
@@ -77,7 +77,7 @@
 import { Icon } from "@iconify/vue";
 
 export default {
-	name: "AddTask",
+	name: "Task",
 	components: {
 		Icon: Icon,
 	},

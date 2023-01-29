@@ -26,12 +26,12 @@ const routes: Array<RouteConfig> = [
 		name: "notfound",
 		component: () => import("../pages/NotFound.vue"),
 	},
-	// {
-	// 	path: "/contacts/:id",
-	// 	name: "contact.edit",
-	// 	component: () => import("../views/ContactEdit.vue"),
-	// 	props: true,
-	// },
+	{
+		path: "/task/:id",
+		name: "task",
+		component: () => import("../pages/Task.vue"),
+		props: true,
+	},
 	// {
 	// 	path: "/",
 	// 	name: "contact.add",
