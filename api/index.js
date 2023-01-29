@@ -11,6 +11,8 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URL, () => {
 	console.log("Connected To MongoDB...");
+}).catch(err => {
+	console.log(err)
 });
 app.use(cors());
 app.use(cookieParser());

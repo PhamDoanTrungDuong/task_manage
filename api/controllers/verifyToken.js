@@ -5,20 +5,22 @@ const verifyToken = (req, res, next) => {
   //ACCESS TOKEN FROM HEADER, REFRESH TOKEN FROM COOKIE
   const token = req.headers.token;
   const refreshToken = req.cookies.refreshToken;
-  if (token) {
+  // console.log(token)
+  if (token !== null) {
     const accessToken = token.split(" ")[1];
+    // console.log(accessToken)
     if(!accessToken) res.status(401).json("You're not authenticated!!");
     jwt.verify(accessToken, process.env.JWT_ACCESS_KEY, async (err, user) => {
       if (err) {
         res.status(403).json("Token is not valid!");
       }
       const userUnit = await User.findOne({ _id: user.id })
-      
+
       req.user = userUnit;
       next();
     });
   } else {
-    res.status(401).json("You're not authenticated");
+    res.status(401).json("You're not authenticatedx");
   }
 };
 

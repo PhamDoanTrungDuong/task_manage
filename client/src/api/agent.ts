@@ -1,35 +1,36 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
+import store from "../store";
 
 // this is the type of the response from the server
 const sleep = (s: number) => new Promise((resolve) => setTimeout(resolve, s * 300));
 
 // this is the type of the error from the server
-axios.defaults.baseURL = process.env.APP_API_URL;
-axios.defaults.withCredentials = true;
+axios.defaults.baseURL = import.meta.env.VITE_APP_API_URL;
+// axios.defaults.withCredentials = true;
 
 // this is the type of the response from the server
 const responseBody = (response: AxiosResponse) => response.data;
 
 axios.interceptors.request.use((config: any) => {
-	//  const token = store.getState().account.user?.token;
-	//  if(token) config.headers.Authorization = `Bearer ${token}`;
+	 const token = store.state.token;
+	 if(token) config.headers.token = `Bearer ${token}`;
 	return config;
 });
 
 //Error Handler
 axios.interceptors.response.use(
 	async (res) => {
-		if (process.env.NODE_ENV === "development") await sleep(0.5);
+		// if (import.meta.env.NODE_ENV === "development") await sleep(0.5);
 		return res;
 	},
-	(error: AxiosError) => {
-		const { data, status }: any = error.response;
-		switch (status) {
-			case 500:
-				break;
-		}
-		return Promise.reject(error.response);
-	}
+	// (error: AxiosError) => {
+	// 	const { data, status }: any = error.response;
+	// 	switch (status) {
+	// 		case 500:
+	// 			break;
+	// 	}
+	// 	return Promise.reject(error.response);
+	// }
 );
 
 //Request Handler
@@ -56,7 +57,7 @@ const requests = {
 const Authen = {
 	login: (values: any) => requests.post("auth/login", values),
 	register: (values: any) => requests.post("auth/register", values),
-	logout: (values: any) => requests.post("auth/logout", values),
+	logout: () => requests.post("auth/logout", {}),
 	refreshToken: (values: any) => requests.post("auth/refresh", values),
 };
 
@@ -69,7 +70,7 @@ const User = {
 
 const Task = {
 	allTasks: () => requests.get("task"),
-	getUser: (id: any) => requests.get(`task/${id}`),
+	getTask: (id: any) => requests.get(`task/${id}`),
 	createTask: (values: any) => requests.post("task", values),
 	editTask: (id: any, values: any) => requests.put(`task/${id}`, values),
 	deleteTask: (id: any) => requests.delete(`task/${id}`),

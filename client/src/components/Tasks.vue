@@ -1,7 +1,7 @@
 <template>
 	<div className="my-5 flex justify-between items-center">
 		<div>
-			<h1 className="text-4xl font-bold text-[#2E3A59]">Hello Duong!</h1>
+			<h1 className="text-4xl font-bold text-[#2E3A59]">Hello <span className="underline underline-offset-2">{{ $store.state.user.username !== null ? $store.state.user.username : ""  }}</span>!</h1>
 			<p className="text-base text-[#2E3A59]">Have a nice day.</p>
 		</div>
 		<router-link to="/addtask">
@@ -176,6 +176,7 @@
 
 <script lang="ts">
 import { Icon } from "@iconify/vue";
+import agent from "../api/agent";
 import Projects from "./Projects.vue";
 
 export default {
@@ -184,5 +185,26 @@ export default {
 		Projects: Projects,
 		Icon: Icon,
 	},
+	data() {
+		return {
+			tasks: []
+		}
+	},
+	methods: {
+		async retrieveTasks() {
+			try {
+				this.tasks = await agent.Task.allTasks();
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		refreshTasksList() {
+			this.retrieveTasks();
+		},
+	},
+	mounted() {
+		// this.refreshTasksList()
+		// console.log(this.refreshTasksList())
+	}
 };
 </script>
