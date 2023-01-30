@@ -72,7 +72,7 @@ const Task = {
 	allTasks: () => requests.get("task"),
 	getTask: (id: any) => requests.get(`task/${id}`),
 	createTask: (values: any) => requests.post("task", values),
-	editTask: (id: any, values: any) => requests.put(`task/${id}`, values),
+	updateTask: (id: any, values: any) => requests.put(`task/${id}`, values),
 	deleteTask: (id: any) => requests.delete(`task/${id}`),
 };
 

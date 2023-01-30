@@ -71,7 +71,7 @@ const taskController = {
 
 	updateTasks: async (req, res) => {
 		const updates = Object.keys(req.body);
-		const allowedUpdates = ["description", "completed"];
+		const allowedUpdates = ["name","description", "completed"];
 		const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
 		if (!isValidOperation) {

@@ -20,6 +20,7 @@
 				<form>
 					<div class="mb-6">
 						<input
+							v-model="Name"
 							type="text"
 							class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
 							placeholder="Name"
@@ -27,32 +28,8 @@
 					</div>
 
 					<div class="mb-6">
-						<input
-							type="date"
-							class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-							placeholder="Date"
-						/>
-					</div>
-
-					<div className="flex justify-between items-center gap-4">
-						<div class="mb-6">
-							<input
-								type="time"
-								class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-								placeholder="Date Start"
-							/>
-						</div>
-						<div class="mb-6">
-							<input
-								type="time"
-								class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-								placeholder="Date End"
-							/>
-						</div>
-					</div>
-
-					<div class="mb-6">
 						<textarea
+							v-model="Desc"
 							type="text"
 							class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
 							placeholder="Description"
@@ -61,7 +38,7 @@
 
 					<div class="w-full">
 						<button
-							type="button"
+							@click.prevent="$store.dispatch('submitUpdateTask')"
 							class="w-full px-7 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:scale-105 duration-100"
 						>
 							Edit Task
@@ -81,7 +58,28 @@ export default {
 	components: {
 		Icon: Icon,
 	},
+	computed: {
+		Name: {
+			get() {
+				return this.$store.state.updateTask.name;
+			},
+			set(value: any) {
+				this.$store.commit("SET_UPDATE_NAME", value);
+			},
+		},
+		Desc: {
+			get() {
+				return this.$store.state.updateTask.description;
+			},
+			set(value: any) {
+				this.$store.commit("SET_UPDATE_DESC", value);
+			},
+		},
+	},
+	mounted() {
+		const id = this.$route.params.id
+		this.$store.dispatch('getTask', id)
+	}
 };
 </script>
 
-<style></style>

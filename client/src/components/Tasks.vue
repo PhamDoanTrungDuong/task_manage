@@ -42,17 +42,17 @@
 		</div>
 		<div>
 			<h1 className="text-2xl font-bold text-[#2E3A59] ml-36 my-2">Tasks</h1>
-			<div
+			<div 
 				className="max-h-[400px] max-w-[450px] mx-auto scroll-smooth overflow-y-scroll"
 			>
-				<router-link :to="{
+				<router-link v-for="task in $store.state.tasks" :key="task._id" :to="{
 					name: 'task',
 					params: {
-						id: 1
+						id: task._id
 					}
 				}">
 					<div
-						className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
+						className="max-w-[400px] mx-auto my-2 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
 					>
 						<div
 							className=" flex justify-center items-center gap-4 "
@@ -68,94 +68,12 @@
 							</div>
 							<div>
 								<h3 className="text-lg font-bold">
-									Desgin Changes
+									{{ task.name }}
 								</h3>
 								<p
 									className="text-gray-500 text-sm"
 								>
-									2 Days ago
-								</p>
-							</div>
-						</div>
-						<div className="cursor-pointer">
-							<Icon
-								icon="mdi:dots-vertical"
-								width="30"
-								color="#D8DEF3"
-							/>
-						</div>
-					</div>
-				</router-link>
-				<router-link :to="{
-					name: 'task',
-					params: {
-						id: 1
-					}
-				}">
-					<div
-						className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-					>
-						<div
-							className=" flex justify-center items-center gap-4 "
-						>
-							<div
-								className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-							>
-								<Icon
-									icon="mdi:calendar-month-outline"
-									width="25"
-									color="#fff"
-								/>
-							</div>
-							<div>
-								<h3 className="text-lg font-bold">
-									Desgin Changes
-								</h3>
-								<p
-									className="text-gray-500 text-sm"
-								>
-									2 Days ago
-								</p>
-							</div>
-						</div>
-						<div className="cursor-pointer">
-							<Icon
-								icon="mdi:dots-vertical"
-								width="30"
-								color="#D8DEF3"
-							/>
-						</div>
-					</div>
-				</router-link>
-				<router-link :to="{
-					name: 'task',
-					params: {
-						id: 1
-					}
-				}">
-					<div
-						className="max-w-[400px] mx-auto my-4 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
-					>
-						<div
-							className=" flex justify-center items-center gap-4 "
-						>
-							<div
-								className="bg-blue-300 w-10 h-10 flex justify-center items-center rounded-lg"
-							>
-								<Icon
-									icon="mdi:calendar-month-outline"
-									width="25"
-									color="#fff"
-								/>
-							</div>
-							<div>
-								<h3 className="text-lg font-bold">
-									Desgin Changes
-								</h3>
-								<p
-									className="text-gray-500 text-sm"
-								>
-									2 Days ago
+									{{ moment(task.createdAt) }}
 								</p>
 							</div>
 						</div>
@@ -176,7 +94,9 @@
 
 <script lang="ts">
 import { Icon } from "@iconify/vue";
+import axios from "axios";
 import agent from "../api/agent";
+import moment from 'moment';
 import Projects from "./Projects.vue";
 
 export default {
@@ -185,26 +105,13 @@ export default {
 		Projects: Projects,
 		Icon: Icon,
 	},
-	data() {
-		return {
-			tasks: []
+	methods: {
+		moment: function (date: any) {
+			 return moment(date).startOf('hour').fromNow();
 		}
 	},
-	methods: {
-		async retrieveTasks() {
-			try {
-				this.tasks = await agent.Task.allTasks();
-			} catch (error) {
-				console.log(error);
-			}
-		},
-		refreshTasksList() {
-			this.retrieveTasks();
-		},
-	},
 	mounted() {
-		// this.refreshTasksList()
-		// console.log(this.refreshTasksList())
+		this.$store.dispatch('retrieveTasks')
 	}
 };
 </script>

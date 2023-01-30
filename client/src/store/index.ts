@@ -2,6 +2,7 @@ import { Mutation } from "./../../node_modules/vuex/types/index.d";
 import { createStore } from "vuex";
 import agent from "../api/agent";
 import router from "../router";
+import axios from "axios";
 
 const store = createStore({
 	state: {
@@ -14,8 +15,17 @@ const store = createStore({
 			username: "",
 			password: "",
 		},
+		addTask: {
+			name: "",
+			description: "",
+		},
+		updateTask: {
+			name: "",
+			description: "",
+		},
 		token: "",
 		user: null,
+      tasks: [],
 	},
 	getters: {},
 	mutations: {
@@ -37,6 +47,8 @@ const store = createStore({
 		setPasswordLogin(state, value) {
 			state.login.password = value;
 		},
+
+		// set token jwt
 		setToken(state) {
 			const user = JSON.parse(localStorage.getItem("userLogin")!);
 			state.token = user.accessToken;
@@ -45,8 +57,26 @@ const store = createStore({
 			const user = JSON.parse(localStorage.getItem("userLogin")!);
 			state.user = user.user;
 		},
+
 		setLogout(state) {
 			state.user = null;
+		},
+      SET_TASKS(state, payload) {
+         state.tasks = payload
+      },
+		//add task
+		SET_TASK_NAME(state, value) {
+			state.addTask.name = value;
+		},
+		SET_TASK_DESC(state, value) {
+			state.addTask.description = value;
+		},
+		//update task
+		SET_UPDATE_NAME(state, value) {
+			state.updateTask.name = value;
+		},
+		SET_UPDATE_DESC(state, value) {
+			state.updateTask.description = value;
 		},
 	},
 	actions: {
@@ -103,6 +133,60 @@ const store = createStore({
 			// } catch (error) {
 			// 	console.log(error);
 			// }
+		},
+      async retrieveTasks({ commit }) {
+			try {
+				const data = await agent.Task.allTasks();
+            commit('SET_TASKS', data)
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		async submitAddTask({ commit }) {
+			try {
+				// console.log(this.state.addTask)
+				await agent.Task.createTask(this.state.addTask)
+					.then((res) => {
+						alert("create task succesfull");
+						router.push("/");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		async submitUpdateTask({ commit }) {
+			try {
+				// console.log(this.state.addTask)
+				const idUpdate = router.currentRoute.value.params.id
+				await agent.Task.updateTask(idUpdate, this.state.updateTask)
+					.then((res) => {
+						alert("edit task succesfull");
+						router.push("/");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		async getTask({ commit }, id) {
+			try {
+				await agent.Task.getTask(id)
+					.then((res) => {
+						console.log(res)
+						commit('SET_UPDATE_NAME', res.name)
+						commit('SET_UPDATE_DESC', res.description)
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
 });
