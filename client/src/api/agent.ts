@@ -55,25 +55,25 @@ const requests = {
 };
 
 const Authen = {
-	login: (values: any) => requests.post("auth/login", values),
-	register: (values: any) => requests.post("auth/register", values),
-	logout: () => requests.post("auth/logout", {}),
+	login: (values: any) => requests.post("auth/login", values), //x
+	register: (values: any) => requests.post("auth/register", values), //x
+	logout: () => requests.post("auth/logout", {}), //x
 	refreshToken: (values: any) => requests.post("auth/refresh", values),
 };
 
 const User = {
 	getAllUsers: () => requests.get("user"),
-	getUser: (id: any) => requests.get(`user/${id}`),
+	getUser: (id: any) => requests.get(`user/${id}`), //x
 	updateUser: (id: any, values: any) => requests.put(`user/${id}`, values),
 	deleteUser: (id: any) => requests.delete(`user/${id}`),
 };
 
 const Task = {
-	allTasks: () => requests.get("task"),
-	getTask: (id: any) => requests.get(`task/${id}`),
-	createTask: (values: any) => requests.post("task", values),
-	updateTask: (id: any, values: any) => requests.put(`task/${id}`, values),
-	deleteTask: (id: any) => requests.delete(`task/${id}`),
+	allTasks: () => requests.get("task"), //x
+	getTask: (id: any) => requests.get(`task/${id}`), //x
+	createTask: (values: any) => requests.post("task", values), //x
+	updateTask: (id: any, values: any) => requests.put(`task/${id}`, values), //x
+	deleteTask: (id: any) => requests.delete(`task/${id}`), //x
 };
 
 //Agent
