@@ -159,12 +159,45 @@ const store = createStore({
 		},
 		async submitUpdateTask({ commit }) {
 			try {
-				// console.log(this.state.addTask)
+				// console.log(this.state.updateTask)
 				const idUpdate = router.currentRoute.value.params.id
 				await agent.Task.updateTask(idUpdate, this.state.updateTask)
 					.then((res) => {
 						alert("edit task succesfull");
 						router.push("/");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		async checkTask({ commit }, idUpdate) {
+			try {
+				const completed = this.state.tasks.filter((item: any) => item._id === idUpdate);
+				// @ts-ignore
+				const data = {completed: !completed[0].completed};
+				await agent.Task.updateTask(idUpdate, data)
+					.then((res) => {
+						alert("check task succesfull");
+						this.dispatch('retrieveTasks')
+						// router.push("/");
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} catch (error) {
+				console.log(error);
+			}
+		},
+		async deleteTask({ commit }, idDelete) {
+			try {
+				await agent.Task.deleteTask(idDelete)
+					.then((res) => {
+						alert("delete task succesfull");
+						this.dispatch('retrieveTasks')
+						// router.push("/");
 					})
 					.catch((err) => {
 						console.log(err);

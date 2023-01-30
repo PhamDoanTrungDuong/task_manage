@@ -52,7 +52,7 @@
 					}
 				}">
 					<div
-						className="max-w-[400px] mx-auto my-2 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:scale-105 duration-200"
+						className="max-w-[400px] mx-auto my-2 flex justify-between items-center bg-white p-3 rounded-2xl cursor-pointer hover:bg-slate-300/30 duration-200"
 					>
 						<div
 							className=" flex justify-center items-center gap-4 "
@@ -77,12 +77,37 @@
 								</p>
 							</div>
 						</div>
-						<div className="cursor-pointer">
-							<Icon
+						<div className="flex justify-center items-center gap-2">
+							<div className="cursor-pointer hover:scale-105 duration-200"
+								@click.prevent="$store.dispatch('checkTask', task._id)"
+							>
+								<Icon v-if="task.completed !== true"
+									icon="mdi:check-circle"
+									width="25"
+									color="#D8DEF3"
+								/>
+								<Icon v-else
+									icon="mdi:check-circle"
+									width="25"
+									color="#32CD32"
+								/>
+							</div>
+							<div className="cursor-pointer hover:scale-105 duration-200"
+								@click.prevent ="$store.dispatch('deleteTask', task._id)"
+							>
+								<Icon
+									icon="mdi:delete"
+									width="25"
+									color="red"
+								/>
+							</div>
+							<!-- <div className="cursor-pointer">
+								<Icon
 								icon="mdi:dots-vertical"
 								width="30"
 								color="#D8DEF3"
-							/>
+								/>
+							</div> -->
 						</div>
 					</div>
 				</router-link>
