@@ -5,7 +5,7 @@ const verifyToken = (req, res, next) => {
   //ACCESS TOKEN FROM HEADER, REFRESH TOKEN FROM COOKIE
   const token = req.headers.token;
   const refreshToken = req.cookies.refreshToken;
-  // console.log(token)
+  // console.log("TOken:", token)
   if (token !== null) {
     const accessToken = token.split(" ")[1];
     // console.log(accessToken)

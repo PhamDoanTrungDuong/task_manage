@@ -76,23 +76,6 @@ const Task = {
 	deleteTask: (id: any) => requests.delete(`task/${id}`), //x
 };
 
-//Agent
-// const Catalog = {
-//     list: (params: URLSearchParams) => requests.get('products', params),
-//     details: (id: number) => requests.get(`products/${id}`),
-//     fetchFilter: () => requests.get('products/filters'),
-//     getProductCount: () => requests.get('products/get-product-count'),
-//     getColors: () => requests.get('products/get-colors'),
-//     getSizes: () => requests.get('products/get-sizes'),
-//     productVariants: (id: number) => requests.get(`products/product-variants/${id}`),
-//     variantsDetail: (id: number) => requests.get(`products/variants-details/${id}`),
-//     getProductDiscount: () => requests.get('discount'),
-//     addProductDiscount: (proudctId: number, percent: number) => requests.post(`discount?productId=${proudctId}&discount=${percent}`, {}),
-//     deleteProductDiscount: (productId: number) => requests.delete(`discount/${productId}`),
-//     productViewCount: (productId: number) => requests.post(`products/product-viewcount/${productId}`, {}),
-//     checkUserNotify: (id: number) => requests.post(`orders/userNotify/${id}`, {}),
-// }
-
 function createFormData(item: any) {
 	let formData = new FormData();
 	for (const key in item) {

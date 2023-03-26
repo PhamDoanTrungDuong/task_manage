@@ -104,7 +104,11 @@ const store = createStore({
 							JSON.stringify(res)
 						);
 						commit("setUser");
+						commit("setToken");
 						router.push("/");
+					})
+					.then(() => {
+						this.dispatch('retrieveTasks')
 					})
 					.catch((err) => {
 						console.log(err);
@@ -118,6 +122,7 @@ const store = createStore({
          localStorage.removeItem("userLogin");
          this.state.token ="";
          this.state.user = null;
+			this.state.tasks = [];
          router.push("/signin");
 			// try {
 			// 	await agent.Authen.logout()

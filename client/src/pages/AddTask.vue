@@ -61,7 +61,7 @@ export default {
 	computed: {
 		Name: {
 			get() {
-				return this.$store.state.addTask.name;
+				return this.$store.state.addTask.name = "";
 			},
 			set(value: any) {
 				this.$store.commit("SET_TASK_NAME", value);

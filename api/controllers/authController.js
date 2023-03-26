@@ -8,6 +8,7 @@ const authController = {
 	//REGISTER
 	registerUser: async (req, res) => {
 		try {
+			console.log(req)
 			const salt = await bcrypt.genSalt(10);
 			const hashed = await bcrypt.hash(req.body.password, salt);
 
@@ -17,6 +18,8 @@ const authController = {
 				email: req.body.email,
 				password: hashed,
 			});
+
+			console.log(newUser)
 
 			//Save user to DB
 			const user = await newUser.save();
